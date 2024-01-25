@@ -1,9 +1,11 @@
 if(BUILD_TESTING)
    set(HEADERS
       inc/ColorTest.h
+      inc/CoutStringPreparatorTest.h
       )
    set(SOURCES
       src/ColorTest.cpp
+      src/CoutStringPreparatorTest.cpp
       )
    
    add_executable(consolants_view_ut ${HEADERS} ${SOURCES})

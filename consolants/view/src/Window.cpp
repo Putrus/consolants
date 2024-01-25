@@ -6,8 +6,6 @@
 #include <Windows.h>
 #endif
 
-constexpr int OFFSET_BACKGROUND_COLOR = 10;
-
 namespace ants::view
 {
    Window::Window(size_t x, size_t y)
@@ -98,17 +96,6 @@ namespace ants::view
 
    std::string Window::prepareCoutString() const
    {
-      std::stringstream ss;
-      for (size_t y = 0; y < canvas.size(); y += 2)
-      {
-         for (size_t x = 0; x < canvas[y].size(); ++x)
-         {
-            ss << "\033[" << canvas[y][x] << ';' <<
-               (int)canvas[y + 1][x] + OFFSET_BACKGROUND_COLOR << 'm' << (char)-33;
-         }
-         ss << "\n";
-      }
-      ss << "\033[0m";
-      return ss.str();
+      return coutStringPreparator.prepareCoutString(canvas);
    }
 }

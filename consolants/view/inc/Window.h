@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../inc/Color.h"
+#include "../inc/CoutStringPreparator.h"
 
 #include "../../math/inc/Point.h"
 
@@ -34,5 +34,6 @@ namespace ants::view
 
       std::vector<std::vector<Color>> canvas;
       Color clearColor = Color::Black;
+      CoutStringPreparator coutStringPreparator;
 };
 }
