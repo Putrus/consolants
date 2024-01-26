@@ -17,9 +17,9 @@ int main()
 
    while (true)
    {
-      std::cout << "Enter the world width (1 - 120): ";
+      std::cout << "Enter the world width (1 - 111): ";
       std::cin >> worldSize.x;
-      if (worldSize.x < 1 || worldSize.x > 120)
+      if (worldSize.x < 1 || worldSize.x > 111)
       {
          std::cout << "\x1B[31mWrong world size. Try again.\x1B[0m" << std::endl;
          continue;
