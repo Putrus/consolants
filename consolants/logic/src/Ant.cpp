@@ -62,8 +62,9 @@ namespace ants::logic
                   ++position.y;
                }
             }
+            return;
          }
-         else if (position == anthill.getPosition())
+         else if (food > 0 && position == anthill.getPosition())
          {
             anthill.addFood(food);
             food = 0;
@@ -87,8 +88,8 @@ namespace ants::logic
                   ++foodIt;
                }
             }
-            setRandomFoodDestination();
          }
+         setRandomFoodDestination();
       }
    }
 

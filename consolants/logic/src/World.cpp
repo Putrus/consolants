@@ -3,6 +3,8 @@
 #include "../inc/World.h"
 
 #include <algorithm>
+#include <cstdio>
+#include <ctime>
 
 namespace ants::logic
 {

@@ -7,7 +7,7 @@ int main()
    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
    DWORD consoleMode;
    GetConsoleMode(out, &consoleMode);
-   consoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+   consoleMode |= 0x004;
    SetConsoleMode(out, consoleMode);
 
    ants::math::Point worldSize;

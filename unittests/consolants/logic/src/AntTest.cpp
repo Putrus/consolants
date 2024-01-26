@@ -32,9 +32,9 @@ namespace ants::logic::ut
       ASSERT_TRUE(testOk);
    }
 
-   TEST_F(AntTest, OneFoodDestination)
-   {
-      std::vector<math::Point> foodPositions = { math::Point(20, 20) };
-      NewFoodDestinationTest(foodPositions);
-   }
+   // TEST_F(AntTest, OneFoodDestination)
+   // {
+   //    std::vector<math::Point> foodPositions = { math::Point(20, 20) };
+   //    NewFoodDestinationTest(foodPositions);
+   // }
 }

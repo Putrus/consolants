@@ -1,5 +1,7 @@
 if(BUILD_TESTING)
-   set(HEADERS)
+   set(HEADERS
+      inc/AntTest.h
+      )
    set(SOURCES
       src/AntTest.cpp
       src/FoodTest.cpp
