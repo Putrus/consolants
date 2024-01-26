@@ -5,8 +5,8 @@
 
 namespace ants::logic
 {
-   Simulation::Simulation(float nanosecondsPerFrame, float updateDeltaTime)
-    : nanosecondsPerFrame(nanosecondsPerFrame), updateDeltaTime(updateDeltaTime) {}
+   Simulation::Simulation(const math::Point& worldSize, int colonies, float nanosecondsPerFrame, float updateDeltaTime)
+      : nanosecondsPerFrame(nanosecondsPerFrame), updateDeltaTime(updateDeltaTime), world(worldSize) {}
 
    void Simulation::run()
    {
@@ -32,6 +32,6 @@ namespace ants::logic
 
    void Simulation::update()
    {
-      //update elements
+      world.update(updateDeltaTime);
    }
 }

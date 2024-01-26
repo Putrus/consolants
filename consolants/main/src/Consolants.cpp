@@ -1,27 +1,54 @@
 #include "../inc/Consolants.h"
 
+#include "../../logic/inc/Ant.h"
+#include "../../logic/inc/Anthill.h"
+
 constexpr float NANOSECONDS_PER_FRAME = 16666666.f;
+constexpr float SECONDS_PER_FRAME = 0.016f;
 
 namespace ants::main
 {
-   Consolants::Consolants() : Simulation(NANOSECONDS_PER_FRAME,
-      NANOSECONDS_PER_FRAME), window(110, 50) {}
+   Consolants::Consolants() : Simulation(math::Point(110, 50), 4, NANOSECONDS_PER_FRAME,
+      SECONDS_PER_FRAME), window(110, 50)
+   {
+      
+   }
 
    void Consolants::display()
    {
       window.clear();
-      window.setPixel(view::Color::Sky, 5, 5);
-      window.setPixel(view::Color::Sky, 6, 10);
-      window.setPixel(view::Color::Sky, 5, 15);
-      window.setPixel(view::Color::Sky, 7, 18);
-      window.setPixel(view::Color::Red, 100, 45);
-      window.setPixel(view::Color::Red, 101, 43);
-      window.setPixel(view::Color::Red, 102, 46);
-      window.setPixel(view::Color::Red, 100, 47);
-      window.setPixel(view::Color::Green, 50, 26);
-      window.setPixel(view::Color::Green, 53, 27);
-      window.setPixel(view::Color::Green, 60, 29);
-      window.setPixel(view::Color::Green, 54, 23);
+      const auto& foods = world.getFoods();
+      for(const auto& food : foods)
+      {
+         window.setPixel(view::Color::Green, food->getPosition());
+      }
+
+      const auto& anthills = world.getAnthills();
+      for(const auto& anthill : anthills)
+      {
+         if (anthill->getColonyId() == 0)
+         {
+            window.setPixel(view::Color::Gold, anthill->getPosition());
+         }
+         else
+         {
+            window.setPixel(view::Color::Gray, anthill->getPosition());
+         }
+      }
+
+            const auto& ants = world.getAnts();
+      std::cout << ants.size() << std::endl;
+      for(const auto& ant : ants)
+      {
+         if (ant->getColonyId() == 0)
+         {
+            window.setPixel(view::Color::Blue, ant->getPosition());
+         }
+         else
+         {
+            window.setPixel(view::Color::Red, ant->getPosition());
+         }
+      }
       window.display();
    }
 }
