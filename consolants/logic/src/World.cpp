@@ -81,7 +81,7 @@ namespace ants::logic
 
    void World::removeAllAnts()
    {
-      anthills.clear();
+      ants.clear();
    }
 
    bool World::isFoodOutsideAnthills() const

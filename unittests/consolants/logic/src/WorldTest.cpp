@@ -39,4 +39,15 @@ namespace ants::logic::ut
       world.removeAllAnts();
       ASSERT_TRUE(world.getAnts().empty());
    }
+
+   TEST_F(WorldTest, IsFoodOutsideAnthillsFalse)
+   {
+      ASSERT_FALSE(world.isFoodOutsideAnthills());
+   }
+
+   TEST_F(WorldTest, IsFoodOutsideAnthillsTrue)
+   {
+      world.addFood(10, 10);
+      ASSERT_TRUE(world.isFoodOutsideAnthills());
+   }
 }
