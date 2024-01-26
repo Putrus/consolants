@@ -117,6 +117,11 @@ namespace ants::logic
       return food;
    }
 
+   const math::Point& Ant::getDestination()
+   {
+      return destination;
+   }
+
    void Ant::setRandomFoodDestination()
    {
       if (world.foods.empty())

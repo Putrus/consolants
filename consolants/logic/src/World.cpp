@@ -71,6 +71,16 @@ namespace ants::logic
       anthills.push_back(std::make_shared<Anthill>(colonyId, x, y, *this));
    }
 
+   void World::addFood(int x, int y)
+   {
+      foods.push_back(std::make_shared<Food>(x, y));
+   }
+
+   void World::removeAllAnts()
+   {
+      anthills.clear();
+   }
+
    bool World::isFoodOutsideAnthills() const
    {
       if (!foods.empty())

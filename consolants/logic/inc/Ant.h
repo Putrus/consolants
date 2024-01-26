@@ -20,6 +20,7 @@ namespace ants::logic
 
       int getColonyId() const;
       int getFood() const;
+      const math::Point& getDestination();
 
    private:
       void setRandomFoodDestination();

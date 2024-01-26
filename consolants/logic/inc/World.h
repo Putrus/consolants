@@ -21,6 +21,8 @@ namespace ants::logic
       void update(float dt);
       void addAnt(Anthill& anthill, int x, int y);
       void addAnthill(int colonyId, int x, int y);
+      void addFood(int x, int y);
+      void removeAllAnts();
 
       bool isFoodOutsideAnthills() const;
       int getBestColonyId() const;
