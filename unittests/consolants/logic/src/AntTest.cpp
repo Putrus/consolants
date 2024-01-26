@@ -2,39 +2,23 @@
 
 namespace ants::logic::ut
 {
-
-   void AntTest::SetUp()
+   TEST_P(AntUpdateDestinationTest, AnthillDestination)
    {
-   }
-
-   void AntTest::TearDown()
-   {
-      world.removeAllAnts();
-   }
-
-   void AntTest::NewFoodDestinationTest(const std::vector<math::Point>& foodPositions)
-   {
-      for (const auto& foodPosition : foodPositions)
+      World world = World(100, 50, 1, 0);
+      Ant ant = Ant(10, 10, *world.getAnthills()[0], world);
+      for(const auto& foodPosition : GetParam())
       {
          world.addFood(foodPosition.x, foodPosition.y);
       }
-
-      ant.update(0.016f);
-      bool testOk = false;
-      for(const auto& foodPosition : foodPositions)
-      {
-         if (foodPosition == ant.getDestination())
-         {
-            testOk = true;
-            break;
-         }
-      }
-      ASSERT_TRUE(testOk);
+      ant.update(0.050f);
+      ASSERT_EQ(world.getAnthills()[0]->getPosition(), ant.getDestination());
    }
 
-   // TEST_F(AntTest, OneFoodDestination)
-   // {
-   //    std::vector<math::Point> foodPositions = { math::Point(20, 20) };
-   //    NewFoodDestinationTest(foodPositions);
-   // }
+   INSTANTIATE_TEST_SUITE_P(FoodsAnthillDestination, AntUpdateDestinationTest,
+      testing::Values(
+         std::vector<math::Point>(),
+         std::vector<math::Point>{ math::Point(30, 30) },
+         std::vector<math::Point>{ math::Point(30, 30), math::Point(15, 15) },
+         std::vector<math::Point>{ math::Point(30, 30), math::Point(15, 15), math::Point(45, 45) },
+         std::vector<math::Point>{ math::Point(30, 30), math::Point(15, 15), math::Point(45, 45), math::Point(33, 33) }));
 }

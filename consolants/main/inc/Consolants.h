@@ -6,17 +6,20 @@
 
 namespace ants::main
 {
-   class Consolants final : public logic::Simulation
+   class Consolants : public logic::Simulation
    {
    public:
       Consolants(const math::Point &worldSize, int colonies, int feed);
 
       void showSummary() const;
 
-   private:
+   protected:
       void display() override;
-      void showAnthillsStatistics() const;
+      virtual void showAnthillsStatistics() const;
+      virtual void drawFoods();
+      virtual void drawAnthills();
+      virtual void drawAnts();
 
-      view::Window window;
+      std::shared_ptr<view::Window> window;
    };
 }

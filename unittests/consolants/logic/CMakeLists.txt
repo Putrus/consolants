@@ -1,10 +1,12 @@
 if(BUILD_TESTING)
    set(HEADERS
       inc/AntTest.h
+      inc/WorldTest.h
       )
    set(SOURCES
       src/AntTest.cpp
       src/FoodTest.cpp
+      src/WorldTest.cpp
       )
    
    add_executable(consolants_logic_ut ${HEADERS} ${SOURCES})

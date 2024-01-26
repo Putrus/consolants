@@ -6,16 +6,7 @@
 
 namespace ants::logic::ut
 {
-   class AntTest : public testing::Test
+   class AntUpdateDestinationTest : public testing::TestWithParam<std::vector<math::Point>>
    {
-   protected:
-      void SetUp() override;
-
-      void TearDown() override;
-
-      void NewFoodDestinationTest(const std::vector<math::Point>& foodPositions);
-
-      World world = World(100, 50, 1, 0);
-      Ant ant = Ant(10, 10, *world.getAnthills()[0], world);
    };
 }

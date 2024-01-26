@@ -13,19 +13,21 @@ namespace ants::view
    class Drawable;
    class Pixel;
 
-   class Window final
+   class Window
    {
    public:
       Window(size_t x, size_t y);
 
-      void clear();
+      virtual void clear();
       void draw(const Drawable& drawable);
-      void display() const;
+      virtual void display() const;
       void setPixel(Color color, int x, int y);
       void setPixel(Color color, const math::Point& position);
       void setPixel(const Pixel& pixel);
 
       void setClearColor(Color color);
+
+      const std::vector<std::vector<Color>>& getCanvas() const;
 
    private:
       void draw(const Drawable* drawable);

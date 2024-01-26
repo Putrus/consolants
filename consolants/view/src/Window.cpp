@@ -3,7 +3,7 @@
 #include "../inc/Window.h"
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 namespace ants::view
@@ -76,6 +76,11 @@ namespace ants::view
    void Window::setClearColor(Color color)
    {
       clearColor = color;
+   }
+
+   const std::vector<std::vector<Color>>& Window::getCanvas() const
+   {
+      return canvas;
    }
 
    void Window::draw(const Drawable* drawable)

@@ -2,10 +2,13 @@ if(BUILD_TESTING)
    set(HEADERS
       inc/ColorTest.h
       inc/CoutStringPreparatorTest.h
+      inc/WindowTest.h
       )
    set(SOURCES
       src/ColorTest.cpp
       src/CoutStringPreparatorTest.cpp
+      src/WindowTest.cpp
+      src/PixelTest.cpp
       )
    
    add_executable(consolants_view_ut ${HEADERS} ${SOURCES})

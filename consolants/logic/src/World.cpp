@@ -8,7 +8,8 @@
 
 namespace ants::logic
 {
-   World::World(int x, int y, int colonies, int feed) : size(x, y) {}
+   World::World(int x, int y, int colonies, int feed) : World(math::Point(x, y), colonies, feed)
+   {}
 
    World::World(const math::Point& size, int colonies, int feed) : size(size)
    {
