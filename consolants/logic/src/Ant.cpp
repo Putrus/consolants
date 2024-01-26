@@ -72,6 +72,7 @@ namespace ants::logic
       else if (position == anthill.getPosition())
       {
          anthill.addFood(food);
+         food = 0;
          ++strength;
          setRandomFoodDestination();
       }

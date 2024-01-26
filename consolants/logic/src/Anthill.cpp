@@ -11,7 +11,6 @@ namespace ants::logic
    void Anthill::update(float dt)
    {
       time += dt;
-      std::cout << time << std::endl;
       if (food > 0 && time > creationTime)
       {
          time -= creationTime;

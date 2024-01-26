@@ -28,7 +28,7 @@ namespace ants::logic
       int food = 0;
       int strength = 1;
       float moveTime = 0.048f;
-      float time;
+      float time = 0.f;
 
       Anthill& anthill;
       World& world;
