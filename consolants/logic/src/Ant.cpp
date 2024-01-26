@@ -18,24 +18,21 @@ namespace ants::logic
    void Ant::update(float dt)
    {
       time += dt;
-      for (auto antIt = world.ants.begin(); antIt != world.ants.end();)
+      for (auto& ant : world.ants)
       {
-         if (getColonyId() == antIt->get()->getColonyId())
+         if (getColonyId() == ant->getColonyId())
          {
-            ++antIt;
             continue;
          }
-         if (position == antIt->get()->getPosition())
+         if (position == ant->getPosition())
          {
-            attack(*antIt);
-            if (antIt->get()->isDead())
+            attack(ant);
+            if (ant->isDead())
             {
                ++food;
-               antIt = world.ants.erase(antIt);
                continue;
             }
          }
-         ++antIt;
       }
 
       if (time < moveTime)
@@ -99,12 +96,12 @@ namespace ants::logic
 
    void Ant::attack(const std::shared_ptr<Ant>& other) const
    {
-      other->getAttacked();
+      other->getAttacked(strength);
    }
 
-   void Ant::getAttacked()
+   void Ant::getAttacked(int damage)
    {
-      --strength;
+      strength -= damage;
    }
 
    bool Ant::isDead() const

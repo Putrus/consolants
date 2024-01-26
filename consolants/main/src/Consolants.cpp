@@ -28,16 +28,15 @@ namespace ants::main
       {
          if (anthill->getColonyId() == 0)
          {
-            window.setPixel(view::Color::Gold, anthill->getPosition());
+            window.setPixel(view::Color::Sky, anthill->getPosition());
          }
          else
          {
-            window.setPixel(view::Color::Gray, anthill->getPosition());
+            window.setPixel(view::Color::Blush, anthill->getPosition());
          }
       }
 
-            const auto& ants = world.getAnts();
-      std::cout << ants.size() << std::endl;
+      const auto& ants = world.getAnts();
       for(const auto& ant : ants)
       {
          if (ant->getColonyId() == 0)
@@ -50,5 +49,6 @@ namespace ants::main
          }
       }
       window.display();
+      std::cout << "\033[94m" << anthills[0]->getFood() << "\033[0m : \033[91m" << anthills[1]->getFood() << std::endl; 
    }
 }

@@ -15,6 +15,7 @@ namespace ants::logic
 
       void addFood(int food);
       int getColonyId() const;
+      int getFood();
 
    private:
       int colonyId;

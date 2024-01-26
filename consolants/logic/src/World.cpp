@@ -20,9 +20,17 @@ namespace ants::logic
 
    void World::update(float dt)
    {
-      for (auto& ant : ants)
+      for (auto antIt = ants.begin(); antIt != ants.end();)
       {
-         ant->update(dt);
+         if (antIt->get()->isDead())
+         {
+            antIt = ants.erase(antIt);
+         }
+         else
+         {
+            antIt->get()->update(dt);
+            ++antIt;
+         }
       }
 
       for (auto& anthill : anthills)

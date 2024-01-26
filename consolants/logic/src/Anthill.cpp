@@ -28,4 +28,9 @@ namespace ants::logic
    {
       return colonyId;
    }
+
+   int Anthill::getFood()
+   {
+      return food;
+   }
 }

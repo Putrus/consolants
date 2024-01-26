@@ -14,7 +14,7 @@ namespace ants::logic
       virtual void update(float dt);
 
       void attack(const std::shared_ptr<Ant>& other) const;
-      void getAttacked();
+      void getAttacked(int damage);
       
       bool isDead() const;
 
