@@ -14,8 +14,11 @@ namespace ants::logic
       if (food > 0 && time > creationTime)
       {
          time -= creationTime;
-         --food;
-         world.addAnt(*this, getPosition().x, getPosition().y);
+         if (!world.getFoods().empty())
+         {
+            --food;
+            world.addAnt(*this, getPosition().x, getPosition().y);
+         }
       }
    }
 

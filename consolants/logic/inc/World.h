@@ -15,12 +15,15 @@ namespace ants::logic
    class World
    {
    public:
-      World(int x, int y);
-      World(const math::Point& size);
+      World(int x, int y, int colonies, int feed);
+      World(const math::Point& size, int colonies, int feed);
 
       void update(float dt);
       void addAnt(Anthill& anthill, int x, int y);
       void addAnthill(int colonyId, int x, int y);
+
+      bool isFoodOutsideAnthills() const;
+      int getBestColonyId() const;
 
       const std::vector<std::shared_ptr<Ant>>& getAnts() const;
       const std::vector<std::shared_ptr<Anthill>>& getAnthills() const;

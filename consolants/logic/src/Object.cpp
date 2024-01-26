@@ -16,6 +16,7 @@ namespace ants::logic
    {
       return position;
    }
+
    void Object::setPosition(int x, int y)
    {
       position.x = x;

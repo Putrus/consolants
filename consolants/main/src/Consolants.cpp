@@ -8,47 +8,50 @@ constexpr float SECONDS_PER_FRAME = 0.016f;
 
 namespace ants::main
 {
-   Consolants::Consolants() : Simulation(math::Point(110, 50), 4, NANOSECONDS_PER_FRAME,
-      SECONDS_PER_FRAME), window(110, 50)
+   Consolants::Consolants(const math::Point &worldSize, int colonies, int feed)
+      : Simulation(worldSize, colonies, feed, NANOSECONDS_PER_FRAME,
+      SECONDS_PER_FRAME), window(worldSize.x, worldSize.y)
+   {}
+
+   void Consolants::showSummary() const
    {
-      
+      int bestColonyId = world.getBestColonyId();
+      std::cout << "There is no food on the screen. Simulation has ended!" << std::endl;
+      std::cout << "\x1B[" << bestColonyId + (int)view::Color::Blush << "mAnt colony " <<
+         bestColonyId << " won!"  << "\x1B[0m" << std::endl;
    }
 
    void Consolants::display()
    {
       window.clear();
-      const auto& foods = world.getFoods();
-      for(const auto& food : foods)
+      for(const auto& food : world.getFoods())
       {
-         window.setPixel(view::Color::Green, food->getPosition());
+         window.setPixel(view::Color::Gray, food->getPosition());
       }
 
-      const auto& anthills = world.getAnthills();
-      for(const auto& anthill : anthills)
+      for(const auto& anthill : world.getAnthills())
       {
-         if (anthill->getColonyId() == 0)
-         {
-            window.setPixel(view::Color::Sky, anthill->getPosition());
-         }
-         else
-         {
-            window.setPixel(view::Color::Blush, anthill->getPosition());
-         }
+         window.setPixel((view::Color)(anthill->getColonyId() +
+            (int)view::Color::Blush), anthill->getPosition());
       }
 
-      const auto& ants = world.getAnts();
-      for(const auto& ant : ants)
+      for(const auto& ant : world.getAnts())
       {
-         if (ant->getColonyId() == 0)
-         {
-            window.setPixel(view::Color::Blue, ant->getPosition());
-         }
-         else
-         {
-            window.setPixel(view::Color::Red, ant->getPosition());
-         }
+         window.setPixel((view::Color)(ant->getColonyId() +
+            (int)view::Color::Red), ant->getPosition());
       }
       window.display();
-      std::cout << "\033[94m" << anthills[0]->getFood() << "\033[0m : \033[91m" << anthills[1]->getFood() << std::endl; 
+      showAnthillsStatistics();
+   }
+
+   void Consolants::showAnthillsStatistics() const
+   {
+      std::cout << ": ";
+      for (const auto& anthill : world.getAnthills())
+      {
+         std::cout << "\x1B[" << anthill->getColonyId() +
+            (int)view::Color::Blush << "m" << anthill->getFood() << "\x1B[0m : ";
+      }
+      std::cout << std::endl;
    }
 }

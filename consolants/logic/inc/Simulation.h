@@ -9,7 +9,8 @@ namespace ants::logic
    class Simulation
    {
    public:
-      Simulation(const math::Point& worldSize, int colonies, float nanosecondsPerFrame, float updateDeltaTime);
+      Simulation(const math::Point &worldSize, int colonies, int feed,
+         float nanosecondsPerFrame, float updateDeltaTime);
 
       void run();
 

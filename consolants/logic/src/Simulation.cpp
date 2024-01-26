@@ -5,8 +5,11 @@
 
 namespace ants::logic
 {
-   Simulation::Simulation(const math::Point& worldSize, int colonies, float nanosecondsPerFrame, float updateDeltaTime)
-      : nanosecondsPerFrame(nanosecondsPerFrame), updateDeltaTime(updateDeltaTime), world(worldSize) {}
+   Simulation::Simulation(const math::Point& worldSize, int colonies, int feed,
+      float nanosecondsPerFrame, float updateDeltaTime)
+      : nanosecondsPerFrame(nanosecondsPerFrame), updateDeltaTime(updateDeltaTime),
+      world(worldSize, colonies, feed)
+   {}
 
    void Simulation::run()
    {
@@ -22,6 +25,12 @@ namespace ants::logic
          while (time >= nanosecondsPerFrame)
          {
             time -= nanosecondsPerFrame;
+
+            if (!world.isFoodOutsideAnthills())
+            {
+               return;
+            }
+            
             update();
             display();
          }

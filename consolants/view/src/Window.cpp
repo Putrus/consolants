@@ -16,7 +16,7 @@ namespace ants::view
          std::vector<Color> row;
          for (size_t j = 0; j < x; ++j)
          {
-            row.push_back(Color::Black);
+            row.push_back(clearColor);
          }
          canvas.push_back(row);
       }

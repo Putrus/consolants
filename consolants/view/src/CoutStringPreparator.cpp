@@ -14,7 +14,7 @@ namespace ants::view
       {
          for (size_t x = 0; x < canvas[y].size(); ++x)
          {
-            ss << "\033[" << canvas[y][x];
+            ss << "\x1B[" << canvas[y][x];
             if (y + 1 < canvas.size())
             { 
               ss << ';' << (int)canvas[y + 1][x] + OFFSET_BACKGROUND_COLOR;
@@ -23,7 +23,7 @@ namespace ants::view
          }
          ss << "\n";
       }
-      ss << "\033[0m";
+      ss << "\x1B[0m";
       return ss.str();
    }
 }
