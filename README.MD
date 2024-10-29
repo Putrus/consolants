@@ -1,12 +1,23 @@
-# Uruchomienie programu
-W celu uruchomienia programu ConsolAnts należy odpalić skrypt RunSimulation.bat
+# Build
 
-# Uruchomienie testów
-W celu uruchomienia testów jednostkowych należy uruchomić skrypt RunUnittests.bat
+## CMake
+Minimum version required is 3.6. 
+```
+git clone https://github.com/Putrus/consolants
+cd consolants
+cmake -S . -B build # Default compiler
+cmake -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Release -S . -B build # Recommended g++ compiler
+cmake --build build
+```
 
-# Generowanie pliku XML z wynikami testów
-Po uruchomieniu testów raport powinien wygenerować się automatyczne.
-Jeśli narzędzie cmake jest zainstalowane to raport pojawi się w folderze
-build\unittests\Testing\YYYYMMDD-HHMM pod nazwą Test.xml
-Jeśli narzędzie cmake nie jest zainstalowane to raport pojawi się w folderze
-build\unittests\Testing\report i dla każdego modułu utworzy się oddzielny plik xml (Logic.xml, Main.xml, Math.xml i View.xml)
+# Run
+## consolants
+The consolants executable (consolants.exe on windows) is located in the build\consolants\main folder
+
+## unit tests
+### ctest 
+```
+ctest --test-dir build/unittests --output-on-failure
+```
+### executable
+The unit tests executables are located in the subdirectories in the build\unittests\consolants folder
