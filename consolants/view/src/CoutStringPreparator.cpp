@@ -17,7 +17,7 @@ namespace ants::view
             ss << "\x1B[" << canvas[y][x];
             if (y + 1 < canvas.size())
             { 
-              ss << ';' << (int)canvas[y + 1][x] + OFFSET_BACKGROUND_COLOR;
+              ss << ';' << static_cast<int>(canvas[y + 1][x]) + OFFSET_BACKGROUND_COLOR;
             }
             ss << "m\xDF";
          }

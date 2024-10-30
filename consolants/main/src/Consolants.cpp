@@ -17,7 +17,7 @@ namespace ants::main
    {
       int bestColonyId = world.getBestColonyId();
       std::cout << "There is no food on the screen. Simulation has ended!" << std::endl;
-      std::cout << "\x1B[" << bestColonyId + (int)view::Color::Blush << "mAnt colony " <<
+      std::cout << "\x1B[" << bestColonyId + static_cast<int>(view::Color::Blush) << "mAnt colony " <<
          bestColonyId << " won!"  << "\x1B[0m" << std::endl;
    }
 
@@ -37,7 +37,7 @@ namespace ants::main
       for (const auto& anthill : world.getAnthills())
       {
          std::cout << "\x1B[" << anthill->getColonyId() +
-            (int)view::Color::Blush << "m" << anthill->getFood() << "\x1B[0m : ";
+            static_cast<int>(view::Color::Blush) << "m" << anthill->getFood() << "\x1B[0m : ";
       }
       std::cout << std::endl;
    }
@@ -55,7 +55,7 @@ namespace ants::main
       for(const auto& anthill : world.getAnthills())
       {
          window->setPixel((view::Color)(anthill->getColonyId() +
-            (int)view::Color::Blush), anthill->getPosition());
+            static_cast<int>(view::Color::Blush)), anthill->getPosition());
       }
    }
 
@@ -64,7 +64,7 @@ namespace ants::main
       for(const auto& ant : world.getAnts())
       {
          window->setPixel((view::Color)(ant->getColonyId() +
-            (int)view::Color::Red), ant->getPosition());
+            static_cast<int>(view::Color::Red)), ant->getPosition());
       }
    }
 }

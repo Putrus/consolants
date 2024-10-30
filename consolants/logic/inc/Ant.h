@@ -11,7 +11,7 @@ namespace ants::logic
       Ant(int x, int y, Anthill& anthill, World& world);
       Ant(const math::Point& position, Anthill& anthill, World& world);
 
-      virtual void update(float dt);
+      virtual void update(float dt) override;
 
       void attack(const std::shared_ptr<Ant>& other) const;
       void getAttacked(int damage);

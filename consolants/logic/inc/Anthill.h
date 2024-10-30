@@ -11,7 +11,7 @@ namespace ants::logic
       Anthill(int colonyId, int x, int y, World& world);
       Anthill(int colonyId, const math::Point& position, World& world);
       
-      virtual void update(float dt);
+      virtual void update(float dt) override;
 
       void addFood(int food);
       int getColonyId() const;

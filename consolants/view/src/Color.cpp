@@ -4,7 +4,7 @@ namespace ants::view
 {
    std::ostream& operator<<(std::ostream& os, Color color)
    {
-      os << (int)color;
+      os << static_cast<int>(color);
       return os;
    }
 }

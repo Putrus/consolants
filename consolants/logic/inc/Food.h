@@ -10,6 +10,6 @@ namespace ants::logic
       Food(int x, int y);
       Food(const math::Point& position);
 
-      virtual void update(float dt);
+      virtual void update(float dt) override;
    };
 }
